@@ -27,7 +27,7 @@ export default {
   plugins: [
     replace({
       'process.env.NODE_ENV': JSON.stringify('production'),
-      'process.env.PUBLIC_URL': JSON.stringify('https://www.applesap.nl'),
+      'process.env.PUBLIC_URL': JSON.stringify('https://gtsport-stats.netlify.app'),
     }),
     json(),
     postcss({

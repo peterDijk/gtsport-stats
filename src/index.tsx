@@ -1,5 +1,5 @@
 import { h, render } from 'preact';
-import { App } from './App';
+import App from './App';
 import './style/style.css';
 import './style/tailwind.css';
 

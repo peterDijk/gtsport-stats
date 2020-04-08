@@ -1,34 +1,40 @@
-import { h, FunctionComponent } from 'preact';
+import { h, FunctionalComponent } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
-import axios from 'axios';
+import { Router, RouterOnChangeArgs } from 'preact-router';
+import shallow from 'zustand/shallow';
+
+import Header from './components/Header';
+import Home from './routes/Home';
+import { testStore } from './lib/hooks/testStore';
 
 export const sleep = (time: number): Promise<string> =>
   new Promise(resolve => {
     setTimeout(() => resolve('Preact PWA - Typescript w/ Rollup Starter Pack'), time);
   });
 
-const host = '/.netlify/functions/gt-sport-profile';
+const App: FunctionalComponent = () => {
+  const handleRoute = (args: RouterOnChangeArgs) => {
+    console.log('do something with route?', { args });
+  };
 
-export const App: FunctionComponent = () => {
-  const [text, setText] = useState<string>('...');
+  const { text, setText } = testStore(
+    state => ({ text: state.text, setText: state.setText }),
+    shallow,
+  );
 
+  console.log({ text });
   useEffect(() => {
-    async function getResponse() {
-      const response = await axios.post(host, null, { params: { job: '1', user_no: '10489475' } });
-      console.log({ data: response.data });
-    }
-    setText('GT Sport Stats PWA rating checker');
-    getResponse();
+    setText('changeddddd');
   }, []);
 
   return (
-    <div>
-      <div>
-        <a href="https://github.com/peterDijk/preact-typescript-rollup-starter" target="_blank">
-          <img src="images/GitHub-Mark-Light-32px.png" />
-        </a>
-      </div>
-      {text}
+    <div id="app" class="relative overflow-hidden mb-8 ">
+      <Header />
+      <Router onChange={handleRoute}>
+        <Home path="/" />
+      </Router>
     </div>
   );
 };
+
+export default App;

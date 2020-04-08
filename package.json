@@ -49,8 +49,12 @@
   "dependencies": {
     "axios": "^0.19.2",
     "core-js": "^3.2.1",
-    "preact": "^10.0.0",
-    "serialize-javascript": "^2.1.2"
+    "immer": "^6.0.3",
+    "preact": "^10.4.0",
+    "preact-icons": "^2.2.5",
+    "preact-router": "^3.2.1",
+    "serialize-javascript": "^2.1.2",
+    "zustand": "^2.2.3"
   },
   "prettier": {
     "printWidth": 80,

@@ -1,20 +1,19 @@
-import create, {
-  StateCreator,
-  SetState,
-  GetState,
-  StoreApi,
-  PartialState,
-} from 'zustand';
+import create, { StateCreator, SetState, GetState, StoreApi, PartialState } from 'zustand';
 import produce from 'immer';
 import { devtools } from 'zustand/middleware';
+import { UserInfo, JStatsDetails, IStatsHistory } from '../../types';
 
 /*
  * (alias) function create<TState extends Record<string | number | * *  * symbol, any>>(createState: StateCreator<TState>): [UseStore<TState>, * StoreApi<TState>]
  */
 
 interface GTState {
-  text: string;
-  setText: (input: string) => void;
+  userInfo: UserInfo;
+  setUserInfo: (input: UserInfo) => void;
+  statsDetails: JStatsDetails;
+  setStatsDetails: (input: JStatsDetails) => void;
+  statsHistory: IStatsHistory;
+  setStatsHistory: (input: IStatsHistory) => void;
 }
 
 const log = (config: StateCreator<GTState>) => (
@@ -23,7 +22,7 @@ const log = (config: StateCreator<GTState>) => (
   api: StoreApi<GTState>,
 ) =>
   config(
-    (args) => {
+    args => {
       console.group('**** zustand store');
       console.log('  applying', args);
       set(args);
@@ -36,10 +35,20 @@ const log = (config: StateCreator<GTState>) => (
 
 export const [gtsportStore] = create<GTState>(
   log(
-    (set): GTState => ({
-      text: 'initial',
-      setText: (input: string) => set((state) => ({ text: input })),
-    }),
+    (set): GTState => {
+      console.log('  init state');
+      return {
+        userInfo: {} as UserInfo,
+        setUserInfo: (input: UserInfo) =>
+          set(state => ({
+            userInfo: input,
+          })),
+        statsDetails: {} as JStatsDetails,
+        setStatsDetails: (input: JStatsDetails) => set(state => ({ statsDetails: input })),
+        statsHistory: {} as IStatsHistory,
+        setStatsHistory: (input: IStatsHistory) => set(state => ({ statsHistory: input })),
+      };
+    },
   ),
 );
 

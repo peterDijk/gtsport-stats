@@ -7,34 +7,55 @@ import Header from './components/Header';
 import Home from './routes/Home';
 import { testStore } from './lib/hooks/testStore';
 import { gtsportStore } from './lib/hooks/gtsportStore';
+import { useUserInfoRequest } from './lib/hooks/useGtsportRequest';
 
 export const sleep = (time: number): Promise<string> =>
-  new Promise((resolve) => {
-    setTimeout(
-      () => resolve('Preact PWA - Typescript w/ Rollup Starter Pack'),
-      time,
-    );
+  new Promise(resolve => {
+    setTimeout(() => resolve('Preact PWA - Typescript w/ Rollup Starter Pack'), time);
   });
 
 const App: FunctionalComponent = () => {
   const handleRoute = (args: RouterOnChangeArgs) => {
-    console.log('do something with route?', { args });
+    // console.log('do something with route?', { args });
   };
 
-  const { text, setText } = gtsportStore(
-    (state) => ({ text: state.text, setText: state.setText }),
+  const {
+    statsDetails,
+    setStatsHistory,
+    setUserInfo,
+    userInfo,
+    statsHistory,
+    setStatsDetails,
+  } = gtsportStore(
+    state => ({
+      statsDetails: state.statsDetails,
+      setStatsDetails: state.setStatsDetails,
+      statsHistory: state.statsHistory,
+      setStatsHistory: state.setStatsHistory,
+      userInfo: state.userInfo,
+      setUserInfo: state.setUserInfo,
+    }),
     shallow,
   );
 
   useEffect(() => {
-    setTimeout(() => {
-      setText('changed');
-    }, 500);
+    const getUserInfo = async () => {
+      const response = await useUserInfoRequest('10489475');
+      setUserInfo(response.profile);
+    };
+    getUserInfo();
   }, []);
 
   useEffect(() => {
-    console.log({ text });
-  }, [text]);
+    console.log({
+      statsDetails,
+      setStatsHistory,
+      setUserInfo,
+      userInfo,
+      statsHistory,
+      setStatsDetails,
+    });
+  }, [statsDetails, setStatsHistory, setUserInfo, userInfo, statsHistory, setStatsDetails]);
 
   return (
     <div id="app" class="relative overflow-hidden mb-8 ">

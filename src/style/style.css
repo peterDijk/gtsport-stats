@@ -1,3 +1,4 @@
+/* purgecss start ignore */
 *,
 *::after,
 *::before {
@@ -20,3 +21,4 @@ body {
   line-height: 1.7;
   color: #fff;
 }
+/* purgecss end ignore */

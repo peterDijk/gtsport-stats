@@ -13,6 +13,7 @@ import replace from '@rollup/plugin-replace';
 import { generateSW } from 'rollup-plugin-workbox';
 import babel from 'rollup-plugin-babel';
 import preact from 'rollup-plugin-preact';
+import purgecss from '@fullhuman/postcss-purgecss';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -31,7 +32,12 @@ export default {
     }),
     json(),
     postcss({
-      plugins: [require('tailwindcss')],
+      plugins: [
+        require('tailwindcss'),
+        purgecss({
+          content: ['./**/*.tsx'],
+        }),
+      ],
     }),
     // nodeResolve({ preferBuiltins: true, browser: true }),
     preact({

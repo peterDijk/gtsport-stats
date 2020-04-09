@@ -6,6 +6,7 @@ import shallow from 'zustand/shallow';
 import Header from './components/Header';
 import Home from './routes/Home';
 import { testStore } from './lib/hooks/testStore';
+import { gtsportStore } from './lib/hooks/gtsportStore';
 
 export const sleep = (time: number): Promise<string> =>
   new Promise((resolve) => {
@@ -20,16 +21,20 @@ const App: FunctionalComponent = () => {
     console.log('do something with route?', { args });
   };
 
-  const { text, setText } = testStore(
+  const { text, setText } = gtsportStore(
     (state) => ({ text: state.text, setText: state.setText }),
     shallow,
   );
 
-  console.log({ text });
+  useEffect(() => {
+    setTimeout(() => {
+      setText('changed');
+    }, 500);
+  }, []);
 
   useEffect(() => {
-    setText('changeddddd');
-  }, []);
+    console.log({ text });
+  }, [text]);
 
   return (
     <div id="app" class="relative overflow-hidden mb-8 ">

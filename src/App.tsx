@@ -8,8 +8,11 @@ import Home from './routes/Home';
 import { testStore } from './lib/hooks/testStore';
 
 export const sleep = (time: number): Promise<string> =>
-  new Promise(resolve => {
-    setTimeout(() => resolve('Preact PWA - Typescript w/ Rollup Starter Pack'), time);
+  new Promise((resolve) => {
+    setTimeout(
+      () => resolve('Preact PWA - Typescript w/ Rollup Starter Pack'),
+      time,
+    );
   });
 
 const App: FunctionalComponent = () => {
@@ -18,11 +21,12 @@ const App: FunctionalComponent = () => {
   };
 
   const { text, setText } = testStore(
-    state => ({ text: state.text, setText: state.setText }),
+    (state) => ({ text: state.text, setText: state.setText }),
     shallow,
   );
 
   console.log({ text });
+
   useEffect(() => {
     setText('changeddddd');
   }, []);

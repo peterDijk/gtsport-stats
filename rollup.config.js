@@ -1,11 +1,9 @@
 import typescript from 'rollup-plugin-typescript2';
-import nodeResolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import builtins from 'rollup-plugin-node-builtins';
 import globals from 'rollup-plugin-node-globals';
 import serve from 'rollup-plugin-serve';
 import livereload from 'rollup-plugin-livereload';
-
 import htmlTemplate from 'rollup-plugin-generate-html-template';
 import { uglify } from 'rollup-plugin-uglify';
 import copy from 'rollup-plugin-copy';
@@ -13,6 +11,8 @@ import postcss from 'rollup-plugin-postcss';
 import json from '@rollup/plugin-json';
 import replace from '@rollup/plugin-replace';
 import { generateSW } from 'rollup-plugin-workbox';
+import babel from 'rollup-plugin-babel';
+import preact from 'rollup-plugin-preact';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -33,11 +33,24 @@ export default {
     postcss({
       plugins: [require('tailwindcss')],
     }),
-    nodeResolve({ preferBuiltins: true, browser: true }),
+    // nodeResolve({ preferBuiltins: true, browser: true }),
+    preact({
+      preferBuiltins: true,
+      browser: true,
+      usePreactX: true,
+      noPropTypes: false,
+      noReactIs: false,
+      noEnv: false,
+      resolvePreactCompat: true,
+    }),
     typescript(),
     commonjs(),
     globals(),
     builtins(),
+    // babel needed for zustand (es6) which clashes with uglify (doesnt do es6)
+    babel({
+      presets: ['@babel/env'],
+    }),
     generateSW({
       swDest: 'dist/service-worker.js',
       globDirectory: 'dist',

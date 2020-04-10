@@ -54,6 +54,7 @@
     "immer": "^6.0.3",
     "preact": "^10.4.0",
     "preact-icons": "^2.2.5",
+    "preact-localstorage": "^1.0.2",
     "preact-router": "^3.2.1",
     "serialize-javascript": "^2.1.2",
     "zustand": "^2.2.3"

@@ -8,6 +8,8 @@ import { UserInfo, JStatsDetails, IStatsHistory } from '../../types';
  */
 
 interface GTState {
+  userId: string;
+  setUserId: (input: string) => void;
   userInfo: UserInfo;
   setUserInfo: (input: UserInfo) => void;
   statsDetails: JStatsDetails;
@@ -34,22 +36,24 @@ const log = (config: StateCreator<GTState>) => (
   );
 
 export const [gtsportStore] = create<GTState>(
-  log(
-    (set): GTState => {
-      console.log('  init state');
-      return {
-        userInfo: {} as UserInfo,
-        setUserInfo: (input: UserInfo) =>
-          set(state => ({
-            userInfo: input,
-          })),
-        statsDetails: {} as JStatsDetails,
-        setStatsDetails: (input: JStatsDetails) => set(state => ({ statsDetails: input })),
-        statsHistory: {} as IStatsHistory,
-        setStatsHistory: (input: IStatsHistory) => set(state => ({ statsHistory: input })),
-      };
-    },
-  ),
+  // log(
+  (set): GTState => {
+    console.log('  init state');
+    return {
+      userId: '',
+      setUserId: (input: string) => set(state => ({ userId: input })),
+      userInfo: {} as UserInfo,
+      setUserInfo: (input: UserInfo) =>
+        set(state => ({
+          userInfo: input,
+        })),
+      statsDetails: {} as JStatsDetails,
+      setStatsDetails: (input: JStatsDetails) => set(state => ({ statsDetails: input })),
+      statsHistory: {} as IStatsHistory,
+      setStatsHistory: (input: IStatsHistory) => set(state => ({ statsHistory: input })),
+    };
+  },
+  // ),
 );
 
 // Turn the set method into an immer proxy

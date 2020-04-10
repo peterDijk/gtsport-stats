@@ -19,44 +19,6 @@ const App: FunctionalComponent = () => {
     // console.log('do something with route?', { args });
   };
 
-  const {
-    statsDetails,
-    setStatsHistory,
-    setUserInfo,
-    userInfo,
-    statsHistory,
-    setStatsDetails,
-  } = gtsportStore(
-    state => ({
-      statsDetails: state.statsDetails,
-      setStatsDetails: state.setStatsDetails,
-      statsHistory: state.statsHistory,
-      setStatsHistory: state.setStatsHistory,
-      userInfo: state.userInfo,
-      setUserInfo: state.setUserInfo,
-    }),
-    shallow,
-  );
-
-  useEffect(() => {
-    const getUserInfo = async () => {
-      const response = await useUserInfoRequest('10489475');
-      setUserInfo(response.profile);
-    };
-    getUserInfo();
-  }, []);
-
-  useEffect(() => {
-    console.log({
-      statsDetails,
-      setStatsHistory,
-      setUserInfo,
-      userInfo,
-      statsHistory,
-      setStatsDetails,
-    });
-  }, [statsDetails, setStatsHistory, setUserInfo, userInfo, statsHistory, setStatsDetails]);
-
   return (
     <div id="app" class="relative overflow-hidden mb-8 ">
       <Header />

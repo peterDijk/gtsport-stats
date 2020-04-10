@@ -1,14 +1,51 @@
 import { h, FunctionalComponent } from 'preact';
+import { useEffect, useState, useRef } from 'preact/hooks';
+
 import Router from 'preact-router';
 import Match from 'preact-router/match';
+
+import preactLocalStorage from 'preact-localstorage';
 
 import { MdAutorenew } from 'preact-icons/md';
 // import { useUserInfoContext } from '../../components/UserInfoProvider/UserInfoProvider';
 import Rating from '../components/Rating';
 import { DriverRatingRanges, MannerRatingRanges } from '../types';
+import { gtsportStore } from '../lib/hooks/gtsportStore';
+import { useUserInfoRequest } from '../lib/hooks/useGtsportRequest';
+import UserInfo from '../components/UserInfo';
+import StatsDetails from '../components/StatsDetails';
+import { StatsHistory } from '../components/StatsHistory';
 
-const Home: FunctionalComponent<{ userId?: string }> = ({ children }) => {
-  return <div className="relative">Home</div>;
+const Home: FunctionalComponent = () => {
+  const fromLocalStorage = preactLocalStorage.get('local-user-id', '');
+  const setUserId = gtsportStore(state => state.setUserId);
+  const userId = gtsportStore(state => state.userId);
+
+  useEffect(() => {
+    if (fromLocalStorage) {
+      setUserId(fromLocalStorage);
+    }
+    if (!fromLocalStorage) {
+      preactLocalStorage.set('local-user-id', userId);
+    }
+  }, [userId]);
+
+  return (
+    <div>
+      <div class="relative">Home</div>
+
+      <input
+        class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 mb-4 block w-full appearance-none leading-normal text-gray-600"
+        type="text"
+        placeholder="gran turismo user id"
+        value={userId}
+        onChange={(e: any) => setUserId(e.target.value)}
+      />
+      <UserInfo />
+      {/* <StatsDetails /> */}
+      <StatsHistory />
+    </div>
+  );
   // const {
   //   user_no,
   //   setUser_no,

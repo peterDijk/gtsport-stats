@@ -16,6 +16,8 @@ interface GTState {
   setStatsDetails: (input: JStatsDetails) => void;
   statsHistory: IStatsHistory;
   setStatsHistory: (input: IStatsHistory) => void;
+  triggerRequest: boolean;
+  setTriggerRequest: (input: boolean) => void;
 }
 
 const log = (config: StateCreator<GTState>) => (
@@ -51,6 +53,8 @@ export const [gtsportStore] = create<GTState>(
       setStatsDetails: (input: JStatsDetails) => set(state => ({ statsDetails: input })),
       statsHistory: {} as IStatsHistory,
       setStatsHistory: (input: IStatsHistory) => set(state => ({ statsHistory: input })),
+      triggerRequest: false,
+      setTriggerRequest: (input: boolean) => set(state => ({ triggerRequest: input })),
     };
   },
   // ),

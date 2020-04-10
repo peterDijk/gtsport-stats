@@ -31,7 +31,9 @@ export const UserInfo: FunctionalComponent = () => {
   return (
     <div class="mt-6 w-full">
       <h2 class="text-base text-xl">user info: </h2>
-      <div class="bg-orange-700 text-2xl whitespace-pre-wrap">{JSON.stringify(userInfo)}</div>
+      <div class="bg-orange-700 text-xl whitespace-pre-wrap rounded-lg p-3">
+        {JSON.stringify(userInfo, null, 1)}
+      </div>
     </div>
   );
 };

@@ -17,21 +17,24 @@ export const StatsDetails: FunctionalComponent = () => {
   const statsDetails = gtsportStore(state => state.statsDetails);
   const setStatsDetails = gtsportStore(state => state.setStatsDetails);
   const userId = gtsportStore(state => state.userId);
+  const triggerRequest = gtsportStore(state => state.triggerRequest);
 
   useEffect(() => {
     const getStatsDetails = async () => {
       const response = await useStatsDetailsRequest(userId);
       setStatsDetails(response.stats);
     };
-    if (userId) {
+    if (userId && triggerRequest) {
       getStatsDetails();
     }
-  }, [userId]);
+  }, [userId, triggerRequest]);
 
   return (
     <div class="mt-6">
       <h2 class="text-base text-xl">stats details: </h2>
-      <div class="bg-orange-900 text-xl whitespace-normal">{JSON.stringify(statsDetails)}</div>
+      <div class="bg-orange-900 text-xl whitespace-pre-wrap rounded-lg p-3">
+        {JSON.stringify(statsDetails, null, 1)}
+      </div>
     </div>
   );
 };

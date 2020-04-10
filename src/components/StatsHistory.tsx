@@ -23,6 +23,7 @@ export const StatsHistory: FunctionalComponent = () => {
   const statsHistory = gtsportStore(state => state.statsHistory);
   const setStatsHistory = gtsportStore(state => state.setStatsHistory);
   const userId = gtsportStore(state => state.userId);
+  const triggerRequest = gtsportStore(state => state.triggerRequest);
 
   useEffect(() => {
     const getStatsHistory = async () => {
@@ -31,10 +32,10 @@ export const StatsHistory: FunctionalComponent = () => {
 
       setStatsHistory(parsedStatsHistory);
     };
-    if (userId) {
+    if (userId && triggerRequest) {
       getStatsHistory();
     }
-  }, [userId]);
+  }, [userId, triggerRequest]);
 
   const {
     lastDriverPoints,

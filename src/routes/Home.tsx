@@ -20,6 +20,8 @@ const Home: FunctionalComponent = () => {
   const fromLocalStorage = preactLocalStorage.get('local-user-id', '');
   const setUserId = gtsportStore(state => state.setUserId);
   const userId = gtsportStore(state => state.userId);
+  const setTrigger = gtsportStore(state => state.setTriggerRequest);
+  const trigger = gtsportStore(state => state.triggerRequest);
 
   useEffect(() => {
     if (fromLocalStorage) {
@@ -28,22 +30,43 @@ const Home: FunctionalComponent = () => {
     if (!fromLocalStorage) {
       preactLocalStorage.set('local-user-id', userId);
     }
+
+    if (userId) {
+      setTrigger(true);
+    }
   }, [userId]);
+
+  useEffect(() => {
+    if (trigger) {
+      setTrigger(false);
+    }
+  }, [trigger]);
+
+  const onRenew = () => {
+    setTrigger(true);
+  };
 
   return (
     <div>
-      <div class="relative">Home</div>
-
-      <input
-        class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 mb-4 block w-full appearance-none leading-normal text-gray-600"
-        type="text"
-        placeholder="gran turismo user id"
-        value={userId}
-        onChange={(e: any) => setUserId(e.target.value)}
-      />
-      <UserInfo />
-      {/* <StatsDetails /> */}
+      <div class="relative flex">Home</div>
+      <div class="relative flex">
+        <input
+          class="bg-white w-full mr-12 focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 appearance-none leading-normal text-gray-600"
+          type="text"
+          placeholder="gran turismo user id"
+          value={userId}
+          onChange={(e: any) => setUserId(e.target.value)}
+        />
+        <button
+          class="bg-white rounded-lg p-2 ml-auto text-gray-600 leading-normal "
+          onClick={onRenew}
+        >
+          (-)
+        </button>
+      </div>
       <StatsHistory />
+      <UserInfo />
+      <StatsDetails />
     </div>
   );
   // const {

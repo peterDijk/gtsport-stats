@@ -34,9 +34,9 @@ export default {
     postcss({
       plugins: [
         require('tailwindcss'),
-        // purgecss({
-        //   content: ['./**/*.tsx'],
-        // }),
+        purgecss({
+          content: ['./**/*.tsx'],
+        }),
       ],
     }),
     // nodeResolve({ preferBuiltins: true, browser: true }),

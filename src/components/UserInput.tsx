@@ -17,7 +17,10 @@ const UserInput: FunctionalComponent<Props> = ({ userId, setUserId, onRenew }) =
         value={userId}
         onChange={(e: any) => setUserId(e.target.value)}
       />
-      <button class="bg-white rounded-lg p-2 ml-6 text-gray-600 leading-normal " onClick={onRenew}>
+      <button
+        class="bg-white rounded-lg p-2 ml-6 w-16 text-gray-600 leading-normal "
+        onClick={onRenew}
+      >
         (-)
       </button>
     </div>

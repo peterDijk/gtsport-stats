@@ -1,4 +1,4 @@
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8eaa9732-24b9-454c-b1f1-6289ef7d7840/deploy-status)](https://app.netlify.com/sites/gtsport-stats/deploys)
 
 
 # GT Sport Ratings

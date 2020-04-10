@@ -46,7 +46,7 @@ export const StatsHistory: FunctionalComponent = () => {
 
   return (
     <div class="mt-6">
-      <h2 class="text-base text-xl">stats history: </h2>
+      <h2 class="text-base">stats history: </h2>
       <Rating
         title="Driver rating"
         current={lastDriverPoints}

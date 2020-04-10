@@ -8,6 +8,7 @@ import { gtsportStore } from '../lib/hooks/gtsportStore';
 import UserInfo from '../components/UserInfo';
 import StatsDetails from '../components/StatsDetails';
 import { StatsHistory } from '../components/StatsHistory';
+import UserInput from '../components/UserInput';
 
 const Home: FunctionalComponent = () => {
   const fromLocalStorage = preactLocalStorage.get('local-user-id', '');
@@ -40,23 +41,8 @@ const Home: FunctionalComponent = () => {
   };
 
   return (
-    <div>
-      <div class="relative flex">ID</div>
-      <div class="relative flex">
-        <input
-          class="bg-white w-full mr-12 focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 appearance-none leading-normal text-gray-600"
-          type="text"
-          placeholder="gran turismo user id"
-          value={userId}
-          onChange={(e: any) => setUserId(e.target.value)}
-        />
-        <button
-          class="bg-white rounded-lg p-2 ml-auto text-gray-600 leading-normal "
-          onClick={onRenew}
-        >
-          (-)
-        </button>
-      </div>
+    <div class="py-4 flex-col items-center text-white">
+      <UserInput userId={userId} setUserId={setUserId} onRenew={onRenew} />
       <StatsHistory />
       <UserInfo />
       <StatsDetails />

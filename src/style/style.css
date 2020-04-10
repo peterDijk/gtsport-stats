@@ -2,24 +2,24 @@
 *,
 *::after,
 *::before {
-  margin: 0;
+  /* margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  box-sizing: inherit; */
 }
 
 html {
   /* font-size: 62.5%; */
-  font-size: 74%;
+  /* font-size: 74%; */
 }
 
 body {
-  box-sizing: border-box;
+  /* box-sizing: border-box;
   padding: 3rem;
   background-color: #002233;
   font-family: 'Source Code Pro', monospace;
   font-size: 2rem;
   font-weight: 400;
   line-height: 1.7;
-  color: #fff;
+  color: #fff; */
 }
 /* purgecss end ignore */

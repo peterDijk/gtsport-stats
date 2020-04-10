@@ -38,26 +38,26 @@ const log = (config: StateCreator<GTState>) => (
   );
 
 export const [gtsportStore] = create<GTState>(
-  log(
-    (set): GTState => {
-      console.log('  init state');
-      return {
-        userId: '',
-        setUserId: (input: string) => set(state => ({ userId: input })),
-        userInfo: {} as UserInfo,
-        setUserInfo: (input: UserInfo) =>
-          set(state => ({
-            userInfo: input,
-          })),
-        statsDetails: {} as JStatsDetails,
-        setStatsDetails: (input: JStatsDetails) => set(state => ({ statsDetails: input })),
-        statsHistory: {} as IStatsHistory,
-        setStatsHistory: (input: IStatsHistory) => set(state => ({ statsHistory: input })),
-        triggerRequest: false,
-        setTriggerRequest: (input: boolean) => set(state => ({ triggerRequest: input })),
-      };
-    },
-  ),
+  // log(
+  (set): GTState => {
+    console.log('  init state');
+    return {
+      userId: '',
+      setUserId: (input: string) => set(state => ({ userId: input })),
+      userInfo: {} as UserInfo,
+      setUserInfo: (input: UserInfo) =>
+        set(state => ({
+          userInfo: input,
+        })),
+      statsDetails: {} as JStatsDetails,
+      setStatsDetails: (input: JStatsDetails) => set(state => ({ statsDetails: input })),
+      statsHistory: {} as IStatsHistory,
+      setStatsHistory: (input: IStatsHistory) => set(state => ({ statsHistory: input })),
+      triggerRequest: false,
+      setTriggerRequest: (input: boolean) => set(state => ({ triggerRequest: input })),
+    };
+  },
+  // ),
 );
 
 // Turn the set method into an immer proxy

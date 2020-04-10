@@ -44,17 +44,9 @@ export const StatsHistory: FunctionalComponent = () => {
     previousMannerPoints,
   } = currentVsLastPoints(statsHistory);
 
-  console.log({
-    lastDriverPoints,
-    previousDriverPoints,
-    lastMannerPoints,
-    previousMannerPoints,
-  });
-
   return (
     <div class="mt-6">
       <h2 class="text-base text-xl">stats history: </h2>
-      {/* <div class="bg-orange-900 text-2xl flex-wrap">{JSON.stringify(statsHistory)}</div> */}
       <Rating
         title="Driver rating"
         current={lastDriverPoints}

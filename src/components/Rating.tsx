@@ -46,8 +46,6 @@ const Rating: FunctionalComponent<Props> = ({ current, previous, ratingRange, ti
   const higherRating = rating && ratingRange.find(range => range.min === rating.max + 1);
   const lowerRating = rating && ratingRange.find(range => range.max === rating.min - 1);
 
-  console.log({ title, rating, lowerRating });
-
   return (
     <div class="max-w flex mb-5 p-3 bg-white rounded-lg">
       <div class="w-20 flex flex-column items-center ">

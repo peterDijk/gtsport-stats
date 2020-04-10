@@ -24,10 +24,10 @@ export const StatsDetails: FunctionalComponent = () => {
       const response = await useStatsDetailsRequest(userId);
       setStatsDetails(response.stats);
     };
-    if (userId && triggerRequest) {
+    if (userId) {
       getStatsDetails();
     }
-  }, [userId, triggerRequest]);
+  }, [userId]);
 
   return (
     <div class="mt-6">

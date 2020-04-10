@@ -5,14 +5,8 @@ import shallow from 'zustand/shallow';
 
 import Header from './components/Header';
 import Home from './routes/Home';
-import { testStore } from './lib/hooks/testStore';
 import { gtsportStore } from './lib/hooks/gtsportStore';
 import { useUserInfoRequest } from './lib/hooks/useGtsportRequest';
-
-export const sleep = (time: number): Promise<string> =>
-  new Promise(resolve => {
-    setTimeout(() => resolve('Preact PWA - Typescript w/ Rollup Starter Pack'), time);
-  });
 
 const App: FunctionalComponent = () => {
   const handleRoute = (args: RouterOnChangeArgs) => {

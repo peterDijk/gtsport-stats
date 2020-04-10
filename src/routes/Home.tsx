@@ -28,12 +28,18 @@ const Home: FunctionalComponent = () => {
       setUserId(fromLocalStorage);
     }
     if (!fromLocalStorage) {
+      console.log('setting');
+
       preactLocalStorage.set('local-user-id', userId);
     }
 
-    if (userId) {
-      setTrigger(true);
-    }
+    // if (userId) {
+    //   setTrigger(true);
+    // }
+  }, []);
+
+  useEffect(() => {
+    preactLocalStorage.set('local-user-id', userId);
   }, [userId]);
 
   useEffect(() => {
@@ -48,7 +54,7 @@ const Home: FunctionalComponent = () => {
 
   return (
     <div>
-      <div class="relative flex">Home</div>
+      <div class="relative flex">ID</div>
       <div class="relative flex">
         <input
           class="bg-white w-full mr-12 focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 appearance-none leading-normal text-gray-600"

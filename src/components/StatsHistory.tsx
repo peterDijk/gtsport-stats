@@ -32,10 +32,10 @@ export const StatsHistory: FunctionalComponent = () => {
 
       setStatsHistory(parsedStatsHistory);
     };
-    if (userId && triggerRequest) {
+    if (userId) {
       getStatsHistory();
     }
-  }, [userId, triggerRequest]);
+  }, [userId]);
 
   const {
     lastDriverPoints,

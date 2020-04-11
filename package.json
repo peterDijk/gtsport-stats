@@ -57,6 +57,7 @@
     "preact-localstorage": "^1.0.2",
     "preact-router": "^3.2.1",
     "serialize-javascript": "^2.1.2",
+    "simple-zustand-devtools": "^1.0.0",
     "zustand": "^2.2.3"
   },
   "prettier": {

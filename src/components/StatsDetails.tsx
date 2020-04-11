@@ -20,7 +20,7 @@ interface Props {
 const StatsDetails: FunctionalComponent<Props> = ({ statsDetails }) => (
   <div class="mt-6 mb-0">
     <h2 class="text-base">stats details: </h2>
-    <div class="bg-orange-900 whitespace-pre-wrap rounded-lg p-3">
+    <div class="bg-orange-900 break-words rounded-lg p-3">
       {JSON.stringify(statsDetails, null, 1)}
     </div>
   </div>

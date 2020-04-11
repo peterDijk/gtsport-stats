@@ -3,7 +3,7 @@
 
 # GT Sport Ratings
 
-Stack:
+### Stack:
 
 - Preact (current bundle = 38kb vs React version of 140kb)
 - Typescript
@@ -13,3 +13,8 @@ Stack:
 - Netlify functions (for server side post request to gran-turismo API)
 - Service workers
 - Mobile first. Progressive Web App makes it feel like a native app crossplatform + no update-by-user required
+
+install locally:
+
+- VSCode Tailwind CSS IntelliSense extension for auto complete class names
+- Netlify CLI for local development environment incl lambda functions

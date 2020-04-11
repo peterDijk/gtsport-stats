@@ -3,14 +3,11 @@ import { useEffect } from 'preact/hooks';
 
 import preactLocalStorage from 'preact-localstorage';
 
-import { MdAutorenew } from 'preact-icons/md';
 import { gtsportStore } from '../lib/hooks/gtsportStore';
-import UserInfo from '../components/UserInfo';
-import StatsDetails from '../components/StatsDetails';
-import { StatsHistory } from '../components/StatsHistory';
-import UserInput from '../components/UserInput';
 
-const Home: FunctionalComponent = () => {
+import Home from '../components/Home';
+
+const HomeContainer: FunctionalComponent = () => {
   const fromLocalStorage = preactLocalStorage.get('local-user-id', '');
   const setUserId = gtsportStore(state => state.setUserId);
   const userId = gtsportStore(state => state.userId);
@@ -40,14 +37,7 @@ const Home: FunctionalComponent = () => {
     setTrigger(true);
   };
 
-  return (
-    <div class="py-4 flex-col items-center text-white">
-      <UserInput userId={userId} setUserId={setUserId} onRenew={onRenew} />
-      <StatsHistory />
-      <UserInfo />
-      <StatsDetails />
-    </div>
-  );
+  return <Home userId={userId} setUserId={setUserId} onRenew={onRenew} />;
 };
 
-export default Home;
+export default HomeContainer;

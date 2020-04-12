@@ -128,13 +128,13 @@ export const MannerRatingRanges: Range[] = [
   },
   {
     rating: 'A',
-    min: 51,
+    min: 70,
     max: 79,
   },
   {
     rating: 'B',
     min: 0,
-    max: 50,
+    max: 69,
   },
   {
     rating: 'C',

@@ -21,6 +21,7 @@
     "@babel/core": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
     "@fullhuman/postcss-purgecss": "^2.1.2",
+    "@rollup/plugin-html": "^0.1.1",
     "@rollup/plugin-json": "^4.0.2",
     "@rollup/plugin-replace": "^2.3.1",
     "bl": "^0.9.5",

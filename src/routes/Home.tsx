@@ -7,8 +7,8 @@ import { gtsportStore } from '../lib/hooks/gtsportStore';
 
 import Home from '../components/Home';
 
-const HomeContainer: FunctionalComponent = () => {
-  const fromLocalStorage = preactLocalStorage.get('local-user-id', '');
+const HomeContainer: FunctionalComponent<{ urlUserId?: string }> = ({ urlUserId }) => {
+  const fromLocalStorage = urlUserId || preactLocalStorage.get('local-user-id', '');
   const setUserId = gtsportStore(state => state.setUserId);
   const userId = gtsportStore(state => state.userId);
   const setTrigger = gtsportStore(state => state.setTriggerRequest);

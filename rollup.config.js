@@ -4,7 +4,8 @@ import builtins from 'rollup-plugin-node-builtins';
 import globals from 'rollup-plugin-node-globals';
 import serve from 'rollup-plugin-serve';
 import livereload from 'rollup-plugin-livereload';
-import htmlTemplate from 'rollup-plugin-generate-html-template';
+// import htmlTemplate from 'rollup-plugin-generate-html-template';
+// import html from '@rollup/plugin-html';
 import { uglify } from 'rollup-plugin-uglify';
 import copy from 'rollup-plugin-copy';
 import postcss from 'rollup-plugin-postcss';
@@ -26,6 +27,10 @@ export default {
     sourcemap: true,
   },
   plugins: [
+    // html({
+    //   publicPath: '/',
+    //   title: 'GT Sport Ratings',
+    // }),
     replace({
       'process.env.NODE_ENV': JSON.stringify('production'),
       'process.env.PUBLIC_URL': JSON.stringify('https://gtsport-stats.netlify.app'),
@@ -62,12 +67,12 @@ export default {
       swDest: 'dist/service-worker.js',
       globDirectory: 'dist',
     }),
-    htmlTemplate({
-      template: './template.html',
-      target: 'index.html',
-    }),
     copy({
       targets: [
+        {
+          src: './index.html',
+          dest: 'dist',
+        },
         {
           src: 'src/images',
           dest: 'dist',
@@ -77,8 +82,14 @@ export default {
     uglify(),
     !production &&
       (serve({
-        contentBase: './dist',
+        contentBase: 'dist',
         open: true,
+        openPage: '/',
+        // Set to true to return index.html (200) instead of error page (404)
+        historyApiFallback: true,
+
+        // Path to fallback page
+        historyApiFallback: '/index.html',
         host: 'localhost',
         port: 3000,
       }),

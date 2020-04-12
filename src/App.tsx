@@ -3,6 +3,7 @@ import { Router } from 'preact-router';
 
 import Header from './components/Header';
 import Home from './routes/Home';
+import Test from './routes/Test';
 
 const App: FunctionalComponent = () => {
   return (
@@ -10,6 +11,7 @@ const App: FunctionalComponent = () => {
       <Header />
       <Router>
         <Home path="/" />
+        <Home path="/:urlUserId" />
       </Router>
     </div>
   );

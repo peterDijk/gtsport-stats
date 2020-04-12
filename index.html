@@ -16,6 +16,9 @@
     />
   </head>
   <body>
+    <!-- manual added script tag, file is copied to dist by copy plugin -->
     <div id="root"></div>
+    <script src="/app.bundle.js"></script>
+    <!-- rollup has to inject app.bundle.js script tag from root (prefix with /) -->
   </body>
 </html>

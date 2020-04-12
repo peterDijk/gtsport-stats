@@ -53,8 +53,7 @@ const RatingContainer: FunctionalComponent<Props> = ({ current, previous, rating
     ratingRange?.find(range => current <= range.max && current >= range.min) ?? unknownRating;
   const higherRating =
     (rating && ratingRange?.find(range => range.min === rating.max + 1)) ?? unknownRating;
-  const lowerRating =
-    (rating && ratingRange?.find(range => range.max === rating.min - 1)) ?? unknownRating;
+  const lowerRating = rating && ratingRange?.find(range => range.max === rating.min - 1);
 
   const forecastText =
     progress === Progress.EQUAL

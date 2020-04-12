@@ -27,10 +27,11 @@ export default {
     sourcemap: true,
   },
   plugins: [
-    // html({
+    // html({ //
     //   publicPath: '/',
     //   title: 'GT Sport Ratings',
     // }),
+    // htmlTemplate // injects script tag, but app.bundle without '/' in front > routing problem
     replace({
       'process.env.NODE_ENV': JSON.stringify('production'),
       'process.env.PUBLIC_URL': JSON.stringify('https://gtsport-stats.netlify.app'),

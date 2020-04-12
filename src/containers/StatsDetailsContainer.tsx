@@ -10,15 +10,22 @@ const StatsDetailsContainer: FunctionalComponent = () => {
   const userId = gtsportStore(state => state.userId);
   const triggerRequest = gtsportStore(state => state.triggerRequest);
 
+  const getStatsDetails = async () => {
+    const response = await useStatsDetailsRequest(userId);
+    setStatsDetails(response.stats);
+  };
+
   useEffect(() => {
-    const getStatsDetails = async () => {
-      const response = await useStatsDetailsRequest(userId);
-      setStatsDetails(response.stats);
-    };
     if (userId) {
       getStatsDetails();
     }
   }, [userId]);
+
+  useEffect(() => {
+    if (triggerRequest && userId) {
+      getStatsDetails();
+    }
+  }, [triggerRequest]);
 
   return <StatsDetails statsDetails={statsDetails} />;
 };

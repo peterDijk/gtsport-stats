@@ -13,17 +13,24 @@ const StatsHistoryContainer: FunctionalComponent = () => {
   const userId = gtsportStore(state => state.userId);
   const triggerRequest = gtsportStore(state => state.triggerRequest);
 
-  useEffect(() => {
-    const getStatsHistory = async () => {
-      const response = await useStatsHistoryRequest(userId);
-      const parsedStatsHistory = parseStatsHistoryJson(response);
+  const getStatsHistory = async () => {
+    const response = await useStatsHistoryRequest(userId);
+    const parsedStatsHistory = parseStatsHistoryJson(response);
 
-      setStatsHistory(parsedStatsHistory);
-    };
+    setStatsHistory(parsedStatsHistory);
+  };
+
+  useEffect(() => {
     if (userId) {
       getStatsHistory();
     }
   }, [userId]);
+
+  useEffect(() => {
+    if (triggerRequest && userId) {
+      getStatsHistory();
+    }
+  }, [triggerRequest]);
 
   const {
     lastDriverPoints,

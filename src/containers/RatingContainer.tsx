@@ -50,7 +50,7 @@ const RatingContainer: FunctionalComponent<Props> = ({ current, previous, rating
   };
 
   const rating: Range =
-    ratingRange?.find(range => current <= range.max && current > range.min) ?? unknownRating;
+    ratingRange?.find(range => current <= range.max && current >= range.min) ?? unknownRating;
   const higherRating =
     (rating && ratingRange?.find(range => range.min === rating.max + 1)) ?? unknownRating;
   const lowerRating =

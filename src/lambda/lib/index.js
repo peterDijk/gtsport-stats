@@ -7,6 +7,7 @@ export async function serverSideRequest(url, params, responseCallback) {
   const config = {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
+      'Access-Control-Allow-Credentials': true,
     },
   };
 

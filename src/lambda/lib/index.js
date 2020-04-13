@@ -20,3 +20,10 @@ export async function serverSideRequest(url, params, responseCallback) {
     responseCallback({ status: 400, body: JSON.stringify(e) });
   }
 }
+
+export function parseSearchResponse(body) {
+  const splitChunksOne = body.split('=');
+  const splitChunksTwo = splitChunksOne[2].split('"');
+
+  return splitChunksTwo[0];
+}

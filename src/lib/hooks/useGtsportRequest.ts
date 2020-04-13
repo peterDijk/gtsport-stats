@@ -1,6 +1,12 @@
 import axios from 'axios';
 
-const API_URL = '/.netlify/functions/gt-sport-profile';
+const API_URL = process.env.API_URL;
+const SEARCH_PROFILE_API = process.env.SEARCH_PROFILE_API;
+
+export const useSearchUserIdRequest = async (username: string) => {
+  const response = await axios.post(SEARCH_PROFILE_API, null, { params: { username } });
+  return response.data;
+};
 
 export const useUserInfoRequest = async (user_no: string) => {
   const response = await axios.post(API_URL, null, { params: { job: '1', user_no } });

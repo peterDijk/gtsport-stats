@@ -6,9 +6,10 @@ import preactLocalStorage from 'preact-localstorage';
 import { gtsportStore } from '../lib/hooks/gtsportStore';
 
 import Home from '../components/Home';
+import { useSearchUserIdRequest } from '../lib/hooks/useGtsportRequest';
 
-const HomeContainer: FunctionalComponent<{ urlUserId?: string }> = ({ urlUserId }) => {
-  const fromLocalStorage = urlUserId || preactLocalStorage.get('local-user-id', '');
+const HomeContainer: FunctionalComponent<{ username?: string }> = ({ username }) => {
+  const fromLocalStorage = preactLocalStorage.get('local-user-id', '');
   const setUserId = gtsportStore(state => state.setUserId);
   const userId = gtsportStore(state => state.userId);
   const setTrigger = gtsportStore(state => state.setTriggerRequest);
@@ -16,8 +17,19 @@ const HomeContainer: FunctionalComponent<{ urlUserId?: string }> = ({ urlUserId 
 
   const hasUserId = userId || userId !== '';
 
+  const searchUserId = async () => {
+    const response = await useSearchUserIdRequest(username);
+    setUserId(response.user_no);
+  };
+
   useEffect(() => {
-    if (!hasUserId && fromLocalStorage && userId !== fromLocalStorage) {
+    if (username) {
+      searchUserId();
+    }
+  }, [username]);
+
+  useEffect(() => {
+    if (!hasUserId && fromLocalStorage && userId !== fromLocalStorage && !username) {
       console.log('local found, setting state', { fromLocalStorage });
       setUserId(fromLocalStorage);
     }

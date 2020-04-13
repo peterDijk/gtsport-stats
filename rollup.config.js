@@ -16,6 +16,9 @@ import babel from 'rollup-plugin-babel';
 import preact from 'rollup-plugin-preact';
 import purgecss from '@fullhuman/postcss-purgecss';
 
+import { config as dotenvConfig } from 'dotenv';
+dotenvConfig();
+
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
@@ -33,6 +36,8 @@ export default {
     // }),
     // htmlTemplate // injects script tag, but app.bundle without '/' in front > routing problem
     replace({
+      'process.env.API_URL': JSON.stringify(process.env.API_URL),
+      'process.env.SEARCH_PROFILE_API': JSON.stringify(process.env.SEARCH_PROFILE_API),
       'process.env.NODE_ENV': JSON.stringify('production'),
       'process.env.PUBLIC_URL': JSON.stringify('https://gtsport-stats.netlify.app'),
     }),

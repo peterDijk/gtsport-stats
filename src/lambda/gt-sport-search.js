@@ -26,5 +26,5 @@ exports.handler = function(event, context, callback) {
     [envParams.username_field]: event.queryStringParameters.username,
   };
 
-  serverSideRequest(`${process.env.SEARCH_PROFILE_API}`, queryStringParameters, lambdaResponse);
+  serverSideRequest(`${process.env.SEARCH_PROFILE_API_EXT}`, queryStringParameters, lambdaResponse);
 };

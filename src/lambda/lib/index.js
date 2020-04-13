@@ -1,6 +1,5 @@
 import axios from 'axios';
-import qs, { ParsedUrlQueryInput } from 'querystring';
-import { ResponseParams } from '../gt-sport-profile';
+import qs from 'querystring';
 
 export async function serverSideRequest(url, params, responseCallback) {
   console.log({ params });
@@ -16,7 +15,7 @@ export async function serverSideRequest(url, params, responseCallback) {
 
     responseCallback({ status: response.status, body: JSON.stringify(response.data) });
   } catch (e) {
-    console.log(e);
+    console.log('*** axios request error ***', e);
     responseCallback({ status: 400, body: JSON.stringify(e) });
   }
 }

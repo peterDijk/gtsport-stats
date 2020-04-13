@@ -4,32 +4,32 @@ import qs from 'querystring';
 export async function serverSideRequest(url, params, responseCallback) {
   console.log({ params });
 
-  // const config = {
-  //   headers: {
-  //     'Content-Type': 'application/x-www-form-urlencoded',
-  //     'Access-Control-Allow-Credentials': true,
-  //     'User-Agent': 'PostmanRuntime',
-  //   },
-  // };
+  const config = {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Access-Control-Allow-Credentials': true,
+      'User-Agent': 'PostmanRuntime',
+    },
+  };
 
   try {
+    // const axiosInstance = axios.create({
+    //   timeout: 10000,
+    //   // withCredentials: true,
+    //   headers: {
+    //     Accept: 'application/json',
+    //     'Content-Type': 'application/x-www-form-urlencoded',
+    //     'Access-Control-Allow-Credentials': true,
+    //     'User-Agent': 'Postman',
+    //   },
+    //   // params: {
+    //   //   id: 37880978,
+    //   //   updateTime: -1,
+    //   // },
+    // });
     axios.defaults.withCredentials = true;
-    const axiosInstance = axios.create({
-      timeout: 10000,
-      // withCredentials: true,
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Access-Control-Allow-Credentials': true,
-        'User-Agent': 'Postman',
-      },
-      // params: {
-      //   id: 37880978,
-      //   updateTime: -1,
-      // },
-    });
 
-    const response = await axiosInstance.post(url, qs.stringify(params));
+    const response = await axios.post(url, qs.stringify(params), config);
     console.log({
       request: response.request,
       config: response.config,

@@ -15,7 +15,8 @@ export async function serverSideRequest(url, params, responseCallback) {
   try {
     const response = await axios.post(url, qs.stringify(params), config);
     console.log({
-      config: response.config.headers,
+      request: response.request,
+      config: response.config,
       status: response.status,
       data: response.data,
     });

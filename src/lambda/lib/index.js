@@ -20,7 +20,7 @@ export async function serverSideRequest(url, params, responseCallback) {
 
     // responseCallback({ status: response.status, body: JSON.stringify(response.data) });
   } catch (e) {
-    console.log('*** axios request error ***', e.request);
+    console.log('*** axios request error ***', e.request.headers);
     responseCallback({ status: 400, body: JSON.stringify(e) });
   }
 }

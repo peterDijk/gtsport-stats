@@ -13,9 +13,10 @@ export async function serverSideRequest(url, params, responseCallback) {
   // };
 
   try {
+    axios.defaults.withCredentials = true;
     const axiosInstance = axios.create({
       timeout: 10000,
-      withCredentials: true,
+      // withCredentials: true,
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/x-www-form-urlencoded',

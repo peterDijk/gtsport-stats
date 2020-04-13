@@ -12,10 +12,11 @@ export async function serverSideRequest(url, params, responseCallback) {
 
   try {
     const response = await axios.post(url, qs.stringify(params), config);
+    console.log({ succesfulResponseRequest: response.request });
 
     responseCallback({ status: response.status, body: JSON.stringify(response.data) });
   } catch (e) {
-    console.log('*** axios request error ***', e);
+    console.log('*** axios request error ***', e.request);
     responseCallback({ status: 400, body: JSON.stringify(e) });
   }
 }

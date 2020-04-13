@@ -30,16 +30,19 @@ export async function serverSideRequest(url, params, responseCallback) {
     axios.defaults.withCredentials = true;
 
     const response = await axios.post(url, qs.stringify(params), config);
-    console.log({
+    console.group('***************** new request');
+    console.log('***************** new request', {
       request: response.request,
       config: response.config,
       status: response.status,
       data: response.data,
+      headers: response.headers,
     });
+    console.groupEnd();
 
     responseCallback({ status: response.status, body: JSON.stringify(response.data) });
   } catch (e) {
-    console.log('*** axios request error, config: ***', e.config);
+    console.log('*** axios request error, headers: ***', e.headers);
     responseCallback({ status: 400, body: JSON.stringify(e) });
   }
 }

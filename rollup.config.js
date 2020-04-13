@@ -90,7 +90,7 @@ export default {
         historyApiFallback: true,
 
         // Path to fallback page
-        historyApiFallback: '/index.html',
+        // historyApiFallback: '/index.html',
         host: 'localhost',
         port: 3000,
       }),

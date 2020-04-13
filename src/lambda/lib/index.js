@@ -15,14 +15,14 @@ export async function serverSideRequest(url, params, responseCallback) {
   try {
     const response = await axios.post(url, qs.stringify(params), config);
     console.log({
-      succesfulResponseRequestHeaders: response.headers,
+      config: response.config.headers,
       status: response.status,
       data: response.data,
     });
 
     responseCallback({ status: response.status, body: JSON.stringify(response.data) });
   } catch (e) {
-    console.log('*** axios request error ***', e);
+    console.log('*** axios request error ***', e.config.headers);
     responseCallback({ status: 400, body: JSON.stringify(e) });
   }
 }

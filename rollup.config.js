@@ -97,7 +97,7 @@ export default {
         // Path to fallback page
         // historyApiFallback: '/index.html',
         host: 'localhost',
-        port: 3000,
+        port: 6000,
       }),
       livereload({
         watch: 'dist',

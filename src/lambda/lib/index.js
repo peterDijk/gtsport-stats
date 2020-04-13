@@ -22,7 +22,7 @@ export async function serverSideRequest(url, params, responseCallback) {
 
     responseCallback({ status: response.status, body: JSON.stringify(response.data) });
   } catch (e) {
-    console.log('*** axios request error ***', e.config.headers);
+    console.log('*** axios request error, config: ***', e.config);
     responseCallback({ status: 400, body: JSON.stringify(e) });
   }
 }

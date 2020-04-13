@@ -20,6 +20,7 @@ export async function serverSideRequest(url, params, responseCallback) {
         Accept: 'application/json',
         'Content-Type': 'application/x-www-form-urlencoded',
         'Access-Control-Allow-Credentials': true,
+        'User-Agent': 'Postman',
       },
       // params: {
       //   id: 37880978,

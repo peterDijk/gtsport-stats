@@ -15,7 +15,8 @@ exports.handler = function(event, context, callback) {
   const lambdaResponse = response => {
     callback(null, {
       statusCode: response.status,
-      body: JSON.stringify({ user_no: parseSearchResponse(JSON.parse(response.body)) }),
+      // body: JSON.stringify({ user_no: parseSearchResponse(JSON.parse(response.body)) }),
+      body: response.body,
     });
   };
 

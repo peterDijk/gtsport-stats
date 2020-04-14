@@ -19,12 +19,7 @@ exports.handler = function(event, context, callback) {
     });
   };
 
-  const envParams = JSON.parse(process.env.SEARCH_PARAMS);
-
-  const queryStringParameters = {
-    ...envParams,
-    [envParams.username_field]: event.queryStringParameters.username,
-  };
+  const queryStringParameters = event.queryStringParameters;
 
   serverSideRequest(`${process.env.SEARCH_PROFILE_API_EXT}`, queryStringParameters, lambdaResponse);
 };

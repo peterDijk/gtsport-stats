@@ -21,8 +21,12 @@ export async function serverSideRequest(url, params, responseCallback) {
 }
 
 export function parseSearchResponse(body) {
-  const splitChunksOne = body.split('=');
-  const splitChunksTwo = splitChunksOne[2].split('"');
+  try {
+    const splitChunksOne = body.split('=');
+    const splitChunksTwo = splitChunksOne[2].split('"');
 
-  return splitChunksTwo[0];
+    return splitChunksTwo[0];
+  } catch (e) {
+    return '';
+  }
 }

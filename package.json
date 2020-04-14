@@ -13,7 +13,7 @@
     "clean": "rm -rf dist/*",
     "rollup": "rollup -c rollup.config.js",
     "rollup:watch": "rollup -c rollup.config.js -w",
-    "build": "npm run clean && npm run rollup",
+    "build": "npm run clean && npm run rollup && npm run build:lambda",
     "build:lambda": "netlify-lambda build src/lambda",
     "start:lambda": "netlify-lambda serve src/lambda -p 8000"
   },

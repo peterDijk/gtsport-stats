@@ -15,17 +15,11 @@ exports.handler = function(event, context, callback) {
   const lambdaResponse = response => {
     callback(null, {
       statusCode: response.status,
-      // body: JSON.stringify({ user_no: parseSearchResponse(JSON.parse(response.body)) }),
-      body: response.body,
+      body: JSON.stringify({ user_no: parseSearchResponse(JSON.parse(response.body)) }),
     });
   };
 
-  const envParams = JSON.parse(process.env.SEARCH_PARAMS);
-
-  const queryStringParameters = {
-    ...envParams,
-    [envParams.username_field]: event.queryStringParameters.username,
-  };
+  const queryStringParameters = event.queryStringParameters;
 
   serverSideRequest(`${process.env.SEARCH_PROFILE_API_EXT}`, queryStringParameters, lambdaResponse);
 };

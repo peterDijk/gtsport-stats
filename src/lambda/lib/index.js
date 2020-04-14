@@ -7,29 +7,26 @@ export async function serverSideRequest(url, params, responseCallback) {
   const config = {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
-      'Access-Control-Allow-Credentials': true,
-      'User-Agent': 'PostmanRuntime',
     },
   };
 
   try {
     const response = await axios.post(url, qs.stringify(params), config);
-    console.log({
-      succesfulResponseRequestHeaders: response.headers,
-      status: response.status,
-      data: response.data,
-    });
 
     responseCallback({ status: response.status, body: JSON.stringify(response.data) });
   } catch (e) {
-    console.log('*** axios request error ***', e);
+    console.log('*** axios request error, e: ***', e);
     responseCallback({ status: 400, body: JSON.stringify(e) });
   }
 }
 
 export function parseSearchResponse(body) {
-  const splitChunksOne = body.split('=');
-  const splitChunksTwo = splitChunksOne[2].split('"');
+  try {
+    const splitChunksOne = body.split('=');
+    const splitChunksTwo = splitChunksOne[2].split('"');
 
-  return splitChunksTwo[0];
+    return splitChunksTwo[0];
+  } catch (e) {
+    return '';
+  }
 }

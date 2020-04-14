@@ -89,6 +89,11 @@ export type Range = {
 
 export const DriverRatingRanges: Range[] = [
   {
+    rating: 'E',
+    min: 1,
+    max: 1999,
+  },
+  {
     rating: 'A+',
     min: 50000,
     max: 75000,
@@ -112,11 +117,6 @@ export const DriverRatingRanges: Range[] = [
     rating: 'D',
     min: 1,
     max: 3999,
-  },
-  {
-    rating: 'E',
-    min: 1,
-    max: 1999,
   },
 ];
 

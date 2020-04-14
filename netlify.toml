@@ -4,7 +4,7 @@
   publish = "dist"
 
 [dev]
-  command = "npm run start"
+  command = "npm start"
   functions = "functions" 
   publish = "dist"
   port=8000 # destination port to use in browser. Lambda dev server is started on same port

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import qs from 'querystring';
 
-export async function serverSideRequest(url, params, responseCallback) {
+export async function serverSidePostRequest(url, params, responseCallback) {
   console.log({ params });
 
   const config = {

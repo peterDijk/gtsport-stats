@@ -1,4 +1,4 @@
-import { serverSideRequest } from './lib';
+import { serverSidePostRequest } from './lib';
 import { GT_API } from './lib/constants';
 
 import { config as dotenvConfig } from 'dotenv';
@@ -20,7 +20,7 @@ exports.handler = function(event, context, callback) {
   }
 
   const queryStringParameters = event.queryStringParameters;
-  serverSideRequest(
+  serverSidePostRequest(
     `${process.env.GT_API}${GT_API.profile}`,
     queryStringParameters,
     lambdaResponse,

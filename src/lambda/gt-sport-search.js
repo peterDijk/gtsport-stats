@@ -1,4 +1,4 @@
-import { serverSideRequest, parseSearchResponse } from './lib';
+import { serverSidePostRequest, parseSearchResponse } from './lib';
 
 import { config as dotenvConfig } from 'dotenv';
 dotenvConfig();
@@ -21,5 +21,9 @@ exports.handler = function(event, context, callback) {
 
   const queryStringParameters = event.queryStringParameters;
 
-  serverSideRequest(`${process.env.SEARCH_PROFILE_API_EXT}`, queryStringParameters, lambdaResponse);
+  serverSidePostRequest(
+    `${process.env.SEARCH_PROFILE_API_EXT}`,
+    queryStringParameters,
+    lambdaResponse,
+  );
 };

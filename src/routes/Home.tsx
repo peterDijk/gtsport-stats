@@ -24,8 +24,7 @@ const HomeContainer: FunctionalComponent<{ username?: string }> = ({ username })
 
   useEffect(() => {
     if (username) {
-      // searchUserId();
-      setUserId(username); // temp for id from url
+      searchUserId();
     }
   }, [username]);
 

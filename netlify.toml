@@ -8,7 +8,7 @@
   functions = "functions" 
   publish = "dist"
   port=8000 # destination port to use in browser. Lambda dev server is started on same port
-  targetPort=6000 # port that local rollup server is running on
+  targetPort=3000 # port that local rollup server is running on
 
 [[redirects]]
   from = "/*"

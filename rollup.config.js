@@ -6,17 +6,23 @@ import serve from 'rollup-plugin-serve';
 import livereload from 'rollup-plugin-livereload';
 // import htmlTemplate from 'rollup-plugin-generate-html-template';
 // import html from '@rollup/plugin-html';
-import { uglify } from 'rollup-plugin-uglify';
+import {
+  uglify
+} from 'rollup-plugin-uglify';
 import copy from 'rollup-plugin-copy';
 import postcss from 'rollup-plugin-postcss';
 import json from '@rollup/plugin-json';
 import replace from '@rollup/plugin-replace';
-import { generateSW } from 'rollup-plugin-workbox';
+import {
+  generateSW
+} from 'rollup-plugin-workbox';
 import babel from 'rollup-plugin-babel';
 import preact from 'rollup-plugin-preact';
 import purgecss from '@fullhuman/postcss-purgecss';
 
-import { config as dotenvConfig } from 'dotenv';
+import {
+  config as dotenvConfig
+} from 'dotenv';
 dotenvConfig();
 
 const production = !process.env.ROLLUP_WATCH;
@@ -46,9 +52,9 @@ export default {
       plugins: [
         require('tailwindcss'),
         production &&
-          purgecss({
-            content: ['./**/*.tsx'],
-          }),
+        purgecss({
+          content: ['./**/*.tsx'],
+        }),
       ],
     }),
     // nodeResolve({ preferBuiltins: true, browser: true }),
@@ -74,8 +80,7 @@ export default {
       globDirectory: 'dist',
     }),
     copy({
-      targets: [
-        {
+      targets: [{
           src: './index.html',
           dest: 'dist',
         },
@@ -87,17 +92,14 @@ export default {
     }),
     uglify(),
     !production &&
-      (serve({
+    (serve({
         contentBase: 'dist',
         open: true,
         openPage: '/',
         // Set to true to return index.html (200) instead of error page (404)
         historyApiFallback: true,
-
-        // Path to fallback page
-        // historyApiFallback: '/index.html',
         host: 'localhost',
-        port: 6000,
+        port: 3000,
       }),
       livereload({
         watch: 'dist',

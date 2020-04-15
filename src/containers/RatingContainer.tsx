@@ -3,6 +3,7 @@ import { h, FunctionalComponent } from 'preact';
 // import { MdKeyboardArrowUp, MdKeyboardArrowDown, MdAutorenew } from 'preact-icons/md';
 import { Range } from '../types';
 import Rating from '../components/Rating';
+import { getCurrentRating, unknownRating } from '../lib/ratings';
 
 interface Props {
   title: string;
@@ -43,14 +44,8 @@ const RatingContainer: FunctionalComponent<Props> = ({ current, previous, rating
         delta: `- ${previous - current}`,
       };
 
-  const unknownRating: Range = {
-    rating: 'unknown',
-    min: 0,
-    max: 0,
-  };
+  const rating: Range = getCurrentRating(ratingRange, current);
 
-  const rating: Range =
-    ratingRange?.find(range => current <= range.max && current >= range.min) ?? unknownRating;
   const higherRating =
     (rating && ratingRange?.find(range => range.min === rating.max + 1)) ?? unknownRating;
   const lowerRating = rating && ratingRange?.find(range => range.max === rating.min - 1);

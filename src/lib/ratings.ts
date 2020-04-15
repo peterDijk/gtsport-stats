@@ -1,4 +1,16 @@
-import { IStatsHistory } from '../types';
+import { IStatsHistory, Range } from '../types';
+
+export const unknownRating: Range = {
+  rating: 'unknown',
+  min: 0,
+  max: 0,
+};
+
+export function getCurrentRating(ratingRange: Range[], current: number) {
+  const rating: Range =
+    ratingRange?.find(range => current <= range.max && current >= range.min) ?? unknownRating;
+  return rating;
+}
 
 export function currentVsLastPoints(statsHistory: IStatsHistory) {
   const lastMonth = statsHistory?.[statsHistory?.length - 1] ?? null;

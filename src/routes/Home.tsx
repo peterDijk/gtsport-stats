@@ -34,7 +34,7 @@ const HomeContainer: FunctionalComponent<{ username?: string }> = ({ username })
       setUserId(fromLocalStorage);
     }
     if (hasUserId) {
-      console.log('writing to local');
+      console.log('writing to localstorage');
       preactLocalStorage.set('local-user-id', userId);
     }
   }, [fromLocalStorage, userId]);

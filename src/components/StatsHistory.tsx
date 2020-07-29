@@ -1,5 +1,5 @@
 import { h, FunctionalComponent } from 'preact';
-import Rating from '../containers/RatingContainer';
+import RatingContainer from '../containers/RatingContainer';
 import { DriverRatingRanges, MannerRatingRanges } from '../types';
 
 interface Props {
@@ -17,13 +17,13 @@ const StatsHistory: FunctionalComponent<Props> = ({
 }) => (
   <div class="mt-6">
     <h2 class="text-base">stats history: </h2>
-    <Rating
+    <RatingContainer
       title="Driver rating"
       current={lastDriverPoints}
       previous={previousDriverPoints}
       ratingRange={DriverRatingRanges}
     />
-    <Rating
+    <RatingContainer
       title="Sportsmanship rating"
       current={lastMannerPoints}
       previous={previousMannerPoints}

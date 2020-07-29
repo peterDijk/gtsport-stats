@@ -1,4 +1,6 @@
 import axios from 'axios';
+import moment from 'moment';
+moment().format();
 
 const API_URL = process.env.API_URL;
 const SEARCH_PROFILE_API = process.env.SEARCH_PROFILE_API;
@@ -19,14 +21,17 @@ export const useStatsDetailsRequest = async (user_no: string) => {
 };
 
 export const useStatsHistoryRequest = async (user_no: string) => {
+  const curr_month = moment().month() + 1;
+  const curr_year = moment().year();
+
   const response = await axios.post(API_URL, null, {
     params: {
       job: '12',
       user_no,
-      month_begin: '3',
-      month_end: '4',
-      year_begin: '2020',
-      year_end: '2020',
+      month_begin: '1',
+      month_end: curr_month,
+      year_begin: curr_year - 3,
+      year_end: curr_year,
     },
   });
 

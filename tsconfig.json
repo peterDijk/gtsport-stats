@@ -5,7 +5,8 @@
     "jsx": "react",
     "jsxFactory": "h",
     "sourceMap": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true
   },
 
   "include": ["./src/**/*"]

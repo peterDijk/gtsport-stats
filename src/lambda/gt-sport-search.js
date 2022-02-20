@@ -6,6 +6,9 @@ dotenvConfig();
 exports.handler = function(event, context, callback) {
   if (!process.env.SEARCH_PROFILE_API) {
     callback(null, {
+      headers: {
+        "Access-Control-Allow-Origin": "*", // Allow from anywhere 
+      },
       statusCode: 500,
       body: 'no environment variables detected',
     });

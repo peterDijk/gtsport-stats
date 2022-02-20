@@ -7,6 +7,9 @@ dotenvConfig();
 exports.handler = function(event, context, callback) {
   const lambdaResponse = response => {
     callback(null, {
+      headers: {
+        "Access-Control-Allow-Origin": "*", // Allow from anywhere 
+      },
       statusCode: response.status,
       body: response.body,
     });

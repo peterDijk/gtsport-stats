@@ -7,7 +7,7 @@
   "author": "Peter van Dijk <petervandijk@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "npm run rollup:watch",
+    "start": "NODE_ENV=development && npm run rollup:watch",
     "tsc": "tsc -p ./",
     "tsc:watch": "tsc -p ./ -w",
     "clean": "rm -rf dist/*",
@@ -15,7 +15,7 @@
     "rollup:watch": "rollup -c rollup.config.js -w",
     "build": "npm run clean && npm run rollup && npm run build:lambda",
     "build:lambda": "netlify-lambda build src/lambda",
-    "start:lambda": "netlify-lambda serve src/lambda -p 8000"
+    "start:lambda": "NODE_ENV=development && netlify-lambda serve src/lambda -p 8000"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",

@@ -11,7 +11,7 @@ const App: FunctionalComponent = () => {
       <Header />
       <Router>
         <Home path="/" />
-        <Home path="/:userid" />
+        <Home path="/:username" />
       </Router>
     </div>
   );

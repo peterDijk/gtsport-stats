@@ -18,6 +18,8 @@ const StatsDetailsContainer: FunctionalComponent = () => {
   useEffect(() => {
     if (userId) {
       getStatsDetails();
+    } else {
+      setStatsDetails(undefined);
     }
   }, [userId]);
 

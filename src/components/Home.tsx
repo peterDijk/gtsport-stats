@@ -7,13 +7,14 @@ import UserInput from '../components/UserInput';
 
 interface Props {
   userId: string;
-  setUserId: (userId: string) => void;
+  userName: string;
+  setUserName: (userName: string) => void;
   onRenew: () => void;
 }
 
-const Home: FunctionalComponent<Props> = ({ userId, setUserId, onRenew }) => (
+const Home: FunctionalComponent<Props> = ({ userId, userName, setUserName, onRenew }) => (
   <div class="py-4 flex-col items-center text-white">
-    <UserInput userId={userId} setUserId={setUserId} onRenew={onRenew} />
+    <UserInput userId={userId} userName={userName} setUserName={setUserName} onRenew={onRenew} />
     <StatsHistory />
     <UserInfo />
     <StatsDetails />

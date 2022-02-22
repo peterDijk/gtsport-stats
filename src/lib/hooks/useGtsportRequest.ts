@@ -6,7 +6,7 @@ const API_URL = process.env.API_URL;
 const SEARCH_PROFILE_API = process.env.SEARCH_PROFILE_API;
 
 export const useSearchUserIdRequest = async (username: string) => {
-  const response = await axios.post(SEARCH_PROFILE_API, null, { params: { username } });
+  const response = await axios.post(SEARCH_PROFILE_API, null, { params: { online_id: username } });
   return response.data;
 };
 

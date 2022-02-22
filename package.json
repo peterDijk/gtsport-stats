@@ -53,6 +53,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "core-js": "^3.21.1",
+    "form-data": "^4.0.0",
     "immer": "^6.0.9",
     "moment": "^2.27.0",
     "preact": "^10.6.6",

@@ -23,6 +23,8 @@ const StatsHistoryContainer: FunctionalComponent = () => {
   useEffect(() => {
     if (userId) {
       getStatsHistory();
+    } else {
+      setStatsHistory(undefined);
     }
   }, [userId]);
 

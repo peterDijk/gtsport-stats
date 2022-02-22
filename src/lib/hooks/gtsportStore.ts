@@ -11,6 +11,8 @@ import { UserInfo, JStatsDetails, IStatsHistory } from '../../types';
 interface GTState {
   userId: string;
   setUserId: (input: string) => void;
+  userName: string;
+  setUserName: (input: string) => void;  
   userInfo: UserInfo;
   setUserInfo: (input: UserInfo) => void;
   statsDetails: JStatsDetails;
@@ -45,6 +47,8 @@ export const [gtsportStore, store] = create<GTState>(
       return {
         userId: '',
         setUserId: (input: string) => set(state => ({ userId: input })),
+        userName: '',
+        setUserName: (input: string) => set(state => ({ userName: input })),
         userInfo: {} as UserInfo,
         setUserInfo: (input: UserInfo) =>
           set(state => ({

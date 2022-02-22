@@ -60,7 +60,7 @@
     "preact-icons": "^2.2.5",
     "preact-localstorage": "^1.0.2",
     "preact-router": "^3.2.1",
-    "serialize-javascript": "^2.1.2",
+    "serialize-javascript": "^3.1.0",
     "simple-zustand-devtools": "^1.0.1",
     "zustand": "^2.2.4"
   },

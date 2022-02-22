@@ -16,6 +16,8 @@ export const UserInfoContainer: FunctionalComponent = () => {
     };
     if (userId) {
       getUserInfo();
+    } else {
+      setUserInfo(undefined);
     }
   }, [userId]);
 
